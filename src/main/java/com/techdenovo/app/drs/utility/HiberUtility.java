@@ -16,5 +16,4 @@ public class HiberUtility {
  
         return sessionFactory;
     }
-
 }

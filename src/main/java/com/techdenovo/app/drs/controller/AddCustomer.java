@@ -11,6 +11,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import com.techdenovo.app.drs.dao.CustomerDAO;
+import com.techdenovo.app.drs.daoImpl.CustomerDAOImpl;
 import com.techdenovo.app.drs.model.Customer;
 import com.techdenovo.app.drs.utility.HiberUtility;
 
@@ -36,14 +38,16 @@ public class AddCustomer extends HttpServlet {
 			customer.setMobileNo(mobileNo);
 			customer.setEmailId(emailid);
 			
-			SessionFactory sessionFactory = HiberUtility.getSessionFactory();
-			Session session = sessionFactory.openSession();
-			Transaction tx= session.beginTransaction();
-			session.save(customer);
-			session.flush();
-			tx.commit();
-			session.close();
-			response.sendRedirect("sucess.jsp");
+			CustomerDAO customerDAO = new CustomerDAOImpl();
+			Long r=customerDAO.addCustomer(customer);
+			System.out.println("r "+r);
+			/*
+			 * SessionFactory sessionFactory = HiberUtility.getSessionFactory(); Session
+			 * session = sessionFactory.openSession(); Transaction tx=
+			 * session.beginTransaction(); session.save(customer); session.flush();
+			 * tx.commit(); session.close();
+			 */
+			response.sendRedirect("success.jsp");
 		}
 		
 	}

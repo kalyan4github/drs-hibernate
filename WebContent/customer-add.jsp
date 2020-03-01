@@ -14,7 +14,7 @@
 </head>
 <body>
 <div class="container">
-	<form action="/AddCustomer" method="post">
+	<form action="AddCustomer" method="post">
 	  <div class="form-group">
 	    <label for="inputFirstName">First Name</label>
 	    <input type="text" class="form-control" id="inputFirstName"  aria-describedby="emailHelp" name="first-name" placeholder="Enter First Name">	    
